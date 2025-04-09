@@ -1,10 +1,10 @@
 import express from "express";
-import { userRouter } from "./routes/userRouter";
+import { mainRouter } from "./routes/mainRouter";
 
 const app = express();
 
 app.use(express.json());
-app.use("/api/v1", userRouter);
+app.use("/api/v1/user", mainRouter);
 
 app.listen(3001, () => {
   console.log("HTTP Backend Running");

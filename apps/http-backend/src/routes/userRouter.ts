@@ -1,16 +1,22 @@
 import { Router } from "express";
 import jwt from "jsonwebtoken";
-import { JWT_SECRET } from "../config";
+import { JWT_SECRET } from "@repo/backend-common/config";
+import { CreateUserSchema, SignInSchema } from "@repo/common/types";
 
 export const userRouter: Router = Router();
 
 userRouter.post("/signup", (req, res) => {
-  const body = req.body;
-  const username = body.username;
-  const password = body.password;
+  const parsedBody = CreateUserSchema.safeParse(req.body);
+  if (!parsedBody.success) {
+    res.status(404).send({
+      message: "Invalid Input ",
+    });
+    return;
+  }
 });
 
 userRouter.post("/signin", (req, res) => {
+  const parsedBody = SignInSchema.safeParse(req.body);
   const token = jwt.sign("1", JWT_SECRET);
 });
 
