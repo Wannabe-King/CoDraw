@@ -12,5 +12,5 @@ export const SignInSchema = z.object({
 });
 
 export const CreateRoomSchema = z.object({
-  userId: z.string().nonempty(),
+  name: z.string().nonempty(),
 });
