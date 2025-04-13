@@ -1,3 +1,8 @@
 {
-  "extends": "@repo/typescript-config/base.json"
+  "extends": "@repo/typescript-config/base.json",
+  "compilerOptions": {
+    "paths": {
+      "@reop/backend-common": ["./src/index.ts"]
+    }
+  }
 }

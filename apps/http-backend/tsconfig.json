@@ -1,6 +1,9 @@
 {
   "extends": "@repo/typescript-config/base.json",
   "compilerOptions": {
+    "paths": {
+      "dto": ["../../packages/backend-common/src/index.ts"]
+    },
     "rootDir": "./src",
     "outDir": "./dist"
   }
