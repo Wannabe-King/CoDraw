@@ -31,3 +31,20 @@ chatRoomRouter.post("/", auth, async (req, res) => {
     });
   }
 });
+
+chatRoomRouter.get("/chats/:roomId", auth, async (req, res) => {
+  const userId = req.userId;
+  const roomId = Number(req.params.roomId);
+  const messages = await prismaClient.chat.findMany({
+    where: {
+      roomId: roomId,
+    },
+    orderBy: {
+      id: "desc",
+    },
+    take: 50,
+  });
+  res.json({
+    messages,
+  });
+});
