@@ -54,6 +54,24 @@ chatRoomRouter.get("/chats/:roomId", auth, async (req, res) => {
   }
 });
 
+// chatRoomRouter.get("/shape/:roomId", auth, async (req, res) => {
+//   try {
+//     const roomId = Number(req.params.roomId);
+//     const shapes = await prismaClient.shape.findMany({
+//       where: {
+//         roomId: roomId,
+//       },
+//     });
+//     res.json({
+//       shapes,
+//     });
+//   } catch (e) {
+//     res.status(411).send({
+//       error: e,
+//     });
+//   }
+// });
+
 chatRoomRouter.get("/:slug", auth, async (req, res) => {
   const slug = req.params.slug;
   try {

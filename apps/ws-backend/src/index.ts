@@ -28,11 +28,10 @@ function checkUser(token: string): string | null {
 
 wss.on("connection", (ws, request) => {
   const url = request.url;
-  console.log(url);
   if (!url) {
     return;
   }
-  console.log("url: ", ws.url);
+  console.log("url: ", url);
   const queryParams = new URLSearchParams(url.split("?")[1]);
   const token = queryParams.get("token") || "";
   const userId = checkUser(token);
@@ -74,7 +73,7 @@ wss.on("connection", (ws, request) => {
       await prismaClient.chat.create({
         data: {
           message,
-          roomId,
+          roomId: Number(roomId),
           userId,
         },
       });

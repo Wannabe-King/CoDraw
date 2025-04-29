@@ -14,3 +14,11 @@ export const SignInSchema = z.object({
 export const CreateRoomSchema = z.object({
   name: z.string().nonempty(),
 });
+
+export const ShapeSchema = z.object({
+  type: z.string().nonempty(),
+  x: z.number(),
+  y: z.number(),
+  width: z.number(),
+  height: z.number(),
+});
